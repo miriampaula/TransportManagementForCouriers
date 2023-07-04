@@ -3,16 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --watch ./index.js",
-    "watch": "node --watch ./index.js",
+    "start": "tsc --build --watch --preserveWatchOutput ./tsconfig.json & node --watch ./index.js",
+    "watch": "node --watch ./api/index.js",
     "app": "ng build --watch --configuration development",
     "api": "tsc --build -w ./api/tsconfig.json",
-    "build": "tsc -w",
+    "build": "tsc --build ./api/tsconfig.json & ng build",
     "query": "node ./api/src/query/query-parser.js",
     "model": "node ./api/src/model.js"
   },
   "private": true,
   "dependencies": {
+    "@koa/cors": "^4.0.0",
     "@koa/router": "^12.0.0",
     "@sendgrid/mail": "^7.7.0",
     "dayjs": "^1.11.8",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/koa": "^2.13.6",
+    "@types/koa__cors": "^4.0.0",
     "@types/koa__router": "^12.0.0",
     "@types/koa-static": "^4.0.2",
     "@types/mssql": "^8.1.2",

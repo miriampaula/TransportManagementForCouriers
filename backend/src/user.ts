@@ -8,7 +8,7 @@ import {
   validateTokenQuery,
 } from "./query";
 import sendMail from "./email";
-import ms = require("ms");
+import * as ms from "ms";
 import { SetOption } from "cookies";
 
 const TOKEN_SECRET_KEY =

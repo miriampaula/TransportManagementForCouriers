@@ -8,9 +8,7 @@ export const registerUserQuery = `
 EXEC dbo.RegisterUser
     @name = @name,
     @email = @email, 
-    @password = @password,
-    @rol = @rol, 
-    @organization = @organization
+    @password = @password
 `;
 
 export const passwordRecoverQuery = `
