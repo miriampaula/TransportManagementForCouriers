@@ -1,11 +1,13 @@
+import Navbar from '../components/Navbar';
 import Form from "../components/Form";
 
-const DosarTransportPage = () => {
+export default function DosarTransportPage() {
   return (
-    <div className="flex flex-col w-full items-center">
-      <Form title="Dosar de transport nou" />
-    </div>
+    <body>
+      <Navbar />
+      <div className="flex flex-col w-full items-center mt-10">
+        <Form title="Dosar de transport nou" />
+      </div>
+    </body>
   );
 };
-
-export default DosarTransportPage;
