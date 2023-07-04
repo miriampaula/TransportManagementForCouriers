@@ -1,11 +1,7 @@
-import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
 
-const HomePage = () => {
+export default function HomePage() {
   return (
-    <div>
-      <Link to="/dosar-transport">Navigheaza la dosar transport</Link>
-    </div>
+      <Navbar />
   );
 };
-
-export default HomePage;
