@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node --watch ./api/index.js",
-    "watch": "node --watch ./api/index.js",
+    "start": "node --watch ./index.js",
+    "watch": "node --watch ./index.js",
     "app": "ng build --watch --configuration development",
     "api": "tsc --build -w ./api/tsconfig.json",
-    "build": "tsc --build ./api/tsconfig.json & ng build",
+    "build": "tsc -w",
     "query": "node ./api/src/query/query-parser.js",
     "model": "node ./api/src/model.js"
   },

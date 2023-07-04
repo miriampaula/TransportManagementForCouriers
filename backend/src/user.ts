@@ -56,12 +56,10 @@ export async function logoutUser(ctx: Koa.Context) {
 
 export async function registerUser(ctx: Koa.Context) {
   let host = ctx.href.split("/")[0];
-  let { name, organization, email, password, passwordRepeat } =
+  let { name, email, password, passwordRepeat } =
     ctx.request.body;
   let validationErrors = ['<div class="row"></div>'];
   if (!name) validationErrors.push("<b>Your name</b> is required");
-  if (!organization)
-    validationErrors.push("<b>Your company name</b> is required");
   if (!email) validationErrors.push("<b>Email</b> is required");
   if (!password) validationErrors.push("You must have a <b>password</b>");
   if (password != passwordRepeat)
@@ -69,8 +67,9 @@ export async function registerUser(ctx: Koa.Context) {
       "<b>Password</b> and <b>Password repeat</b> don't match"
     );
 
-  if (validationErrors.length > 1)
+  if (validationErrors.length > 1) {
     return ctx.throw(400, validationErrors.join("<br/>"));
+  }
   try {
     let {
       recordset: [user],

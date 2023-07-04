@@ -14,7 +14,7 @@ process.chdir(__dirname);
 })();
 const app = new Koa({ proxy: true });
 app
-    .use(serve(`../app`))
+    .use(serve(`../frontend/build`))
     .use(serve(`../upload`))
     .use(router_1.router.routes())
     .use(router_1.router.allowedMethods())

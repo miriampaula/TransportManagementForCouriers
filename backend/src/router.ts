@@ -54,7 +54,7 @@ router
 
 let index = (ctx: Koa.Context) => {
   ctx.type = "html";
-  ctx.body = createReadStream(`../app/index.html`);
+  ctx.body = createReadStream(`../frontend/build/index.html`);
 };
 
 export { router, index };
