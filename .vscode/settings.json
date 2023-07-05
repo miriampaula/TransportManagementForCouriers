@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        ".angular":true,
+        ".browserslistrc": true,
+        ".vscode": true,
+        "**/node_modules": true,
+        "**/build": true,
+        "**/package-lock.json": true,
+        "**/*.js": { "when": "$(basename).ts" }
+    }
+}

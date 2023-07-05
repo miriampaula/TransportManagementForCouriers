@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "types/*"
+      ]
+    },
+    "module": "commonjs",
+    "target": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "sourceMap": false
+  },
+  "compileOnSave": true,
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}
