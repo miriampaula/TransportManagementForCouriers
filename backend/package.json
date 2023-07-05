@@ -2,12 +2,9 @@
   "name": "laguna",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "tsc --build --watch --preserveWatchOutput ./tsconfig.json & node --watch ./index.js",
-    "watch": "node --watch ./api/index.js",
-    "app": "ng build --watch --configuration development",
-    "api": "tsc --build -w ./api/tsconfig.json",
-    "build": "tsc --build ./api/tsconfig.json & ng build",
+    "start": "node --watch ./index.js",
+    "watch": "tsc --build --watch --preserveWatchOutput ./tsconfig.json & node --watch ./index.js",
+    "build": "tsc --build ./api/tsconfig.json",
     "query": "node ./api/src/query/query-parser.js",
     "model": "node ./api/src/model.js"
   },
