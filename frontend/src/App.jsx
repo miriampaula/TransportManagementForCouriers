@@ -3,6 +3,7 @@ import DosarTransportPage from "./pages/DosarTransportPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/dosar-transport" element={<DosarTransportPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
         </Routes>
       </Router>
     </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, useEffect } from "react";
+import Input from "../components/Input";
 
 const BASE_URL = "http://localhost:80/api";
 
@@ -48,6 +49,8 @@ const LoginPage = () => {
             setEmail(e.target.value);
           }}
         />
+        <Input
+          name="hello" />
         <input
           className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
           type="password"
