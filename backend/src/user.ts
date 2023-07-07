@@ -98,7 +98,7 @@ export async function registerUser(ctx: Koa.Context) {
 
     let text = `Bună ${name}, Activează contul cu acest link:  ${link}`;
     // console.log({ link, html });
-    await sendMail(email, "Activare cont laguna delivery", html, text);
+    // await sendMail(email, "Activare cont laguna delivery", html, text);
     ctx.body = { sendMail: "OK" };
   } catch (e) {
     ctx.throw(400, e);
