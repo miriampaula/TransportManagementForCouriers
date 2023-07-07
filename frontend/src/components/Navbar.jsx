@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 
 const navigation = [
@@ -16,6 +16,8 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const location = useLocation();
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -62,9 +64,12 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link to="/login">
-                  <Button text="Login" />
-                </Link>
+                
+                {location.pathname !== "/login" ? (
+                  <Link to="/login">
+                    <Button text="Login" />
+                  </Link>
+                ) : null}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
