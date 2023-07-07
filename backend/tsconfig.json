@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "strict":true,
     "baseUrl": "./",
     "paths": {
       "*": [
         "types/*"
       ]
     },
+    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "target": "ESNext",
     "lib": [
