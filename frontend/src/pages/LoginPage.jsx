@@ -9,7 +9,11 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: "", password: "", })
   const [error, setError] = useState("");
-
+/*
+  const onChange = (field, value) => {
+    setUserData({ ...userData, [field]: value });
+  }*/
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
