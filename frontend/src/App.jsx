@@ -3,6 +3,8 @@ import DosarTransportPage from "./pages/DosarTransportPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
+import LoginPage from "./pages/LoginPage";
+import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
 
 function App() {
