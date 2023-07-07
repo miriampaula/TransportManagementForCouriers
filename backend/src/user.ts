@@ -16,7 +16,7 @@ const TOKEN_SECRET_KEY =
 const TOKEN_EXPIRES_IN = process.env.TOKEN_EXPIRES_IN || "7 days";
 const opts: SetOption = {
   httpOnly: false,
-  expires: new Date(Date.now() + ms(TOKEN_EXPIRES_IN)),
+  expires: new Date(Date.now() + +ms(TOKEN_EXPIRES_IN)),
 };
 
 export async function loginUser(ctx: Koa.Context) {
