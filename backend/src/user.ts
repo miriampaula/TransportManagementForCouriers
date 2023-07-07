@@ -34,7 +34,6 @@ export async function loginUser(ctx: Koa.Context) {
     ctx.cookies.set("token", token, opts);
     ctx.cookies.set("name", user.name, opts);
     ctx.cookies.set("email", user.email, opts);
-    ctx.cookies.set("rol", user.rol, opts);
     ctx.body = { login: "success" };
   } catch (e) {
     ctx.throw(400, e);
