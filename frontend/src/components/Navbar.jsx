@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
+import Button from './Button'
 
 import {Link} from "react-router-dom"
 import Button from "./Button"
@@ -66,6 +68,7 @@ export default function Navbar() {
                                 </div>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+<<<<<<< HEAD
                                 
                                
 
@@ -77,6 +80,10 @@ export default function Navbar() {
                                 </Link>
                                 <Link className='mr-2' to="/register">
                                 <Button text="Register"/>
+=======
+                                <Link to='/login'>
+                                    <Button text='Login'/>
+>>>>>>> 40fec3068480c3cc63140dae9a195957c49b9d12
                                 </Link>
 
                                 {/* Profile dropdown */}

@@ -4,8 +4,8 @@
         ".browserslistrc": true,
         ".vscode": true,
         "**/node_modules": true,
-        "dist": true,
-        "package-lock.json": true,
+        "**/build": true,
+        "**/package-lock.json": true,
         "**/*.js": { "when": "$(basename).ts" }
     }
 }
