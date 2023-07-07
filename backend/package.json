@@ -2,9 +2,9 @@
   "name": "laguna",
   "version": "0.0.0",
   "scripts": {
-    "start": "node --watch ./index.js",
+    "start": "node ./index.js",
     "watch": "tsc --build --watch --preserveWatchOutput ./tsconfig.json & node --watch ./index.js",
-    "build": "tsc --build ./api/tsconfig.json",
+    "build": "tsc --build ./tsconfig.json",
     "query": "node ./api/src/query/query-parser.js",
     "model": "node ./api/src/model.js"
   },
