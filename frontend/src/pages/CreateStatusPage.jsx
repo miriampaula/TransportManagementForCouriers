@@ -13,9 +13,9 @@ const CreateStatusPage = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/status`,
+        `${process.env.REACT_APP_BASE_URL}/data/status`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -25,7 +25,7 @@ const CreateStatusPage = () => {
       const resposneText = await response.text();
       console.log(response);
       if (response.status === 201) {
-        console.log("Success");
+        console.log("success");
       } else {
         setError(resposneText);
       }
@@ -44,7 +44,10 @@ const CreateStatusPage = () => {
           required
           autoComplete="off"
           onChange={(e) =>
-            setStatusData({ ...statusData, nume: e.target.value })
+            setStatusData((prevState) => ({
+              ...prevState,
+              nume: e.target.value,
+            }))
           }
         />
         <input
@@ -54,7 +57,10 @@ const CreateStatusPage = () => {
           required
           autoComplete="off"
           onChange={(e) =>
-            setStatusData({ ...statusData, tipStatus: e.target.value })
+            setStatusData((prevState) => ({
+              ...prevState,
+              tipStatus: e.target.value,
+            }))
           }
         />
         <input
@@ -64,11 +70,14 @@ const CreateStatusPage = () => {
           required
           autoComplete="off"
           onChange={(e) =>
-            setStatusData({ ...statusData, statusDesign: e.target.value })
+            setStatusData((prevState) => ({
+              ...prevState,
+              statusDesign: e.target.value,
+            }))
           }
         />
         <Button text="Create Status" onClick={handleSubmit} />
-        {error ? <div className="text-red-600">{error}</div> : null}
+        {error && <div className="text-red-600">{error}</div>}
       </form>
     </div>
   );

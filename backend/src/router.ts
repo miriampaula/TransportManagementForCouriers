@@ -41,7 +41,8 @@ const router = new Router({ prefix: "/api" });
 router
   .delete("/data/status", deleteStatus)
   .get("/data/status", getStatus)
-  .put("/data/status", bodyParser, putStatus)
+ // .put("/data/status", bodyParser, putStatus)
+ .put("/data/status/:id", bodyParser, putStatus)
   .delete("/data/status",bodyParser,deleteStatus)
   .put("/data/status/:id", bodyParser, updateStatus)
   .post("/loginUser", bodyParser, loginUser)
