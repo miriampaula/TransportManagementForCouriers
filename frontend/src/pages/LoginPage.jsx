@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState} from "react";
 import Input from "../components/Input";
-//import sql from "../services/SqlService";
 
 const BASE_URL = "http://localhost:8080/api";
 
@@ -15,9 +14,6 @@ const LoginPage = () => {
     setUserData({ ...userData, [field]: value });
   };
 
-  useEffect(() => {
-    sql.query('test');
-  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

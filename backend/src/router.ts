@@ -39,6 +39,7 @@ const multipartBody = koaBody({
 const router = new Router({ prefix: "/api" });
 
 router
+  .delete("/data/status", deleteStatus)
   .get("/data/status", getStatus)
   .put("/data/status", bodyParser, putStatus)
   .delete("/data/status",bodyParser,deleteStatus)

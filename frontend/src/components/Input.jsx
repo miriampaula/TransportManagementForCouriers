@@ -1,4 +1,5 @@
 const Input = ({
+  className,
   name,
   type = "text",
   placeholder,
@@ -8,7 +9,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+      className= {className}
       name={name}
       type={type}
       placeholder={placeholder}
