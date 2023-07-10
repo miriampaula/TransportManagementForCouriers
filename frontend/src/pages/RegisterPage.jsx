@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../components/Button";
 
 const RegisterPage = () => {
@@ -35,15 +35,16 @@ const RegisterPage = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
+  // useEffect(() => {
+  //   console.log(userData);
+  // }, [userData]);
 
   return (
-    <div className="flex w-full  justify-center p-4">
+    <div className="flex w-full  justify-center p-20">
       <form className="flex flex-col items-center justify-around border-gray-200 border-2 rounded-md w-3/4 lg:w-2/4 h-96">
+        <h1 className="text-2xl font-bold">Register</h1>
         <input
-          className=" lg:w-3/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className=" lg:w-2/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
           type="text"
           placeholder="Name"
           required
@@ -51,7 +52,7 @@ const RegisterPage = () => {
           onChange={(e) => setUserData({ ...userData, name: e.target.value })}
         />
         <input
-          className=" lg:w-3/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className=" lg:w-2/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
           type="text"
           placeholder="Email"
           required
@@ -59,7 +60,7 @@ const RegisterPage = () => {
           onChange={(e) => setUserData({ ...userData, email: e.target.value })}
         />
         <input
-          className=" lg:w-3/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className=" lg:w-2/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
           type="password"
           placeholder="Password"
           required
@@ -69,7 +70,7 @@ const RegisterPage = () => {
           }
         />
         <input
-          className=" lg:w-3/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className=" lg:w-2/4  border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
           type="password"
           placeholder="Confirm password"
           required

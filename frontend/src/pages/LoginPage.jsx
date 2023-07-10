@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import { useState, useEffect } from "react";
+import { useState} from "react";
+// import Input from "../components/Input";
 
 const BASE_URL = "http://localhost:80/api";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  localStorage.setItem("email", email);
+  localStorage.setItem("password", password);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,12 +25,11 @@ const LoginPage = () => {
           password,
         }),
       });
-      const responseJson = await response.json();
-      console.log(responseJson);
       const responseText = await response.text();
       console.log(responseText);
       if (response.status === 200) {
-        console.log("success");
+        alert("Login reusit... navigare pe pagina HOME");
+        navigate("/home");
       } else {
         setError(responseText);
       }
@@ -36,12 +38,13 @@ const LoginPage = () => {
     }
   };
   return (
-    <div className="flex w-full justify-center p-4">
-      <form className="flex flex-col items-center justify-around border w-3/4 h-96">
+    <div className="flex w-full justify-center p-20">
+      <form className="flex flex-col items-center justify-around border w-3/4 lg:w-2/4 h-96">
+        <h1 className="text-2xl font-bold">Log in</h1>
         <input
-          className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500 lg:w-2/4"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           required
           autoComplete="off"
           onChange={(e) => {
@@ -49,22 +52,25 @@ const LoginPage = () => {
           }}
         />
         <input
-          className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500"
+          className="border-gray-400 border-2 text-gray-900 outline-none text-sm rounded-md p-3 focus:border-sky-500 lg:w-2/4"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           required
           autoComplete="off"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
-        <Button text="Login" onClick={handleSubmit} />
+        {/* <Input name ="salut" type="text" placeholder={"Adauga"}/> */}
+        <Button text="Login" onClick={handleSubmit} 
+        />
         <div className="flex text-lg">
           <p>Nu ai cont?</p>
           <Link className="ml-2 underline text-blue-500" to="/register">
             Înregistrează-te
           </Link>
         </div>
+        {error ? <div className="text-red-600">{error}</div> : null}
       </form>
     </div>
   );
