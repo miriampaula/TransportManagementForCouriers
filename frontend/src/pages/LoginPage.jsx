@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, useEffect } from "react";
+import sql from "../services/SqlService";
 
 const BASE_URL = "http://localhost:80/api";
 
@@ -8,7 +9,9 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  useEffect(() => {
+    sql.query('test');
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -62,7 +65,7 @@ const LoginPage = () => {
         <div className="flex text-lg">
           <p>Nu ai cont?</p>
           <Link className="ml-2 underline text-blue-500" to="/register">
-            Înregistrează-te
+            Register page
           </Link>
         </div>
       </form>
