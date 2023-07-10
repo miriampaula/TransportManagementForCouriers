@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DosarTransportPage from "./pages/DosarTransportPage";
 import HomePage from "./pages/HomePage";
-
+import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
 import Users from "./pages/Users";
