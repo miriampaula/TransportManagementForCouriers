@@ -1,33 +1,40 @@
-import { useEffect } from "react";
+import { stringify } from "json5";
+import { useEffect, useState } from "react";
 
 const Users = () => {
+    const [users, setUsers] = useState([]);
     useEffect(() => {
-        const getusers = async () => {
+        const getUsers = async () => {
             try {
-
-                const users = await fetch('$(process.env.REACT_APP_BASE_URL)/query', {
+                const users = await fetch(`${process.env.REACT_APP_BASE_URL}/query`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        query: 'getUsersQuery'
-                    })
-
+                        query: "getUsersQuery",
+                    }),
                 });
-                console.log(users);
-            } catch (err) {
-                console.log("Users:: getUsers :: ", err);
+                const usersJson = await users.json();
+                setUsers(usersJson);
+
+                console.log(usersJson);
+            } catch (error) {
+                console.log("Users::getUsers::", error);
             }
-        }
-        getusers();
-        
-    }, [])
+        };
+        getUsers();
+    }, []);
     return (
         <div>
-
+            {users.map((user) => (
+                <div key={user.id}>
+                    <h1>{user.email}</h1>
+                    <p>{user.name}</p>
+                </div>
+            ))}
         </div>
-    )
-}
+    );
+};
 
 export default Users;
