@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DosarTransportPage from "./pages/DosarTransportPage";
 import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
