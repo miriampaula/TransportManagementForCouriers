@@ -45,7 +45,7 @@ router
   .post("/passwordReset", bodyParser, passwordReset)
   .delete("/entity", decode, deleteEntity)
   .post("/entity", decode, bodyParser, saveEntity)
-  .post("/query", decode, bodyParser, query)
+  .post("/query", bodyParser, query)
   .delete("/upload", decode, deleteUploadedFile)
   .post("/upload/:idWork", decode, multipartBody, upload)
   .post("/upload", decode, multipartBody, upload)

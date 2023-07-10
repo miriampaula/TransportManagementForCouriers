@@ -16,7 +16,7 @@ function App() {
           <Route path="/dosar-transport" element={<DosarTransportPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/users" element={<Users/>}/>
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
     </div>
