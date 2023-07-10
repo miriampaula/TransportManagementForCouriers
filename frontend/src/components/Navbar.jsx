@@ -10,7 +10,7 @@ const navigation = [
   { name: "Facturi", href: "#" },
   { name: "Colete", href: "#" },
   { name: "Users", href: '/users'},
-  { name: "Users", href: '/users'},
+  { name: "Users", href: '/status'},
 
 ];
 
