@@ -13,6 +13,8 @@ import {
   logoutUser,
   validateToken,
 } from "./user";
+import { getStatus } from "./model/status";
+import { putStatus } from "./model/status";
 
 const bodyParser = koaBody({
   jsonLimit: 50 * 1024 * 1025,
@@ -37,6 +39,8 @@ const multipartBody = koaBody({
 const router = new Router({ prefix: "/api" });
 
 router
+  .get("/data/status", getStatus)
+  .put("/data/status", bodyParser, putStatus)
   .post("/loginUser", bodyParser, loginUser)
   .get("/logoutUser", logoutUser)
   .post("/registerUser", bodyParser, registerUser)

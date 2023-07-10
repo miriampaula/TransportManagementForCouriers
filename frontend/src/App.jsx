@@ -4,7 +4,10 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
+<<<<<<< HEAD
 import Users from "./pages/Users";
+=======
+>>>>>>> viorelfilip
 
 function App() {
   return (
