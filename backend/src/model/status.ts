@@ -21,17 +21,17 @@ export async function putStatus(ctx: Koa.Context) {
       400,
       "Proprietatea <tipStatus> este obligatorie pentru tabela <status>"
     );
-  } else if (typeof nume !== "string")
+  } else if (typeof tipStatus !== "string")
     return ctx.throw(400, "Proprietatea <nume> trebuie sa fie de tip text");
   if (!statusDesign) {
     return ctx.throw(
       400,
       "Proprietatea <statusDesign> este obligatorie pentru tabela <status>"
     );
-  } else if (typeof nume !== "string")
+  } else if (typeof statusDesign !== "string")
     return ctx.throw(400, "Proprietatea <nume> trebuie sa fie de tip text");
   ctx.body = await sql(
-    "insert into dbo.Status(nume, TipStatus, StatusDesign) values (@nume, @tipStatus, @statusDesign)",
+    "insert into dbo.Status(Nume, TipStatus, StatusDesign) values (@nume, @tipStatus, @statusDesign)",
     ctx.request.body
   );
 }
