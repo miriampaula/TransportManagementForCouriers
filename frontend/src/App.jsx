@@ -3,7 +3,8 @@ import DosarTransportPage from "./pages/DosarTransportPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
-import RegisterPage from "./pages/RegisterPage";
+
+import StatusPage from "./pages/StatusPage";
 import Users from "./pages/Users";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/dosar-transport" element={<DosarTransportPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/status" element={<StatusPage />} />
           <Route path="/users" element={<Users />} />
 
         </Routes>
