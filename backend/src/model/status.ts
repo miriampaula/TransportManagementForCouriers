@@ -2,36 +2,66 @@ import * as Koa from "koa";
 
 import { sql } from "./../sql";
 
-export async function getStatus(ctx: Koa.Context) {
-  ctx.body = await sql("select * from dbo.Status");
+export async function getStatus(ctx) {
+  const { recordsets } = await sql("select * from dbo.Status");
+  ctx.body = recordsets;
 }
 
-export async function putStatus(ctx: Koa.Context) {
+export async function putStatus(ctx) {
   const { nume, tipStatus, statusDesign } = ctx.request.body;
-
   if (!nume) {
     return ctx.throw(
       400,
-      "Proprietatea <nume> este obligatorie pentru tabela <status>"
+      "Coloana <nume> este obligatorie pentru tabela <status>!"
     );
-  } else if (typeof nume !== "string")
-    return ctx.throw(400, "Proprietatea <nume> trebuie sa fie de tip text");
+  }
   if (!tipStatus) {
     return ctx.throw(
       400,
-      "Proprietatea <tipStatus> este obligatorie pentru tabela <status>"
+      "Coloana <tipStatus> este obligatorie pentru tabela <status>!"
     );
-  } else if (typeof tipStatus !== "string")
-    return ctx.throw(400, "Proprietatea <nume> trebuie sa fie de tip text");
+  }
   if (!statusDesign) {
     return ctx.throw(
       400,
-      "Proprietatea <statusDesign> este obligatorie pentru tabela <status>"
+      "Coloana <statusDesign> este obligatorie pentru tabela <status>!"
     );
-  } else if (typeof statusDesign !== "string")
-    return ctx.throw(400, "Proprietatea <nume> trebuie sa fie de tip text");
-  ctx.body = await sql(
-    "insert into dbo.Status(Nume, TipStatus, StatusDesign) values (@nume, @tipStatus, @statusDesign)",
+  }
+  await sql(
+    "insert into dbo.Status(Nume, TipStatus, StatusDesign) values(@nume, @tipStatus, @statusDesign)",
     ctx.request.body
   );
+  await getStatus(ctx);
+}
+
+export async function deleteStatus(ctx) {
+  const { id } = ctx.request.query;
+  await sql(`delete from status where id=@id`, { id });
+  await getStatus(ctx);
+}
+
+export async function updateStatus(ctx) {
+  let { id } = ctx.request.body;
+  if (!id) {
+    return ctx.throw(400, "Coloana <id> este obligatorie pentru update !");
+  }
+  let {
+    recordset: [idExists],
+  } = await sql("select id from status where id=@id", { id });
+
+  if (!idExists) {
+    return ctx.throw(400, `Id-ul ${id} nu exista in tabela status!`);
+  }
+
+  let columns = Object.keys(ctx.request.body).filter((e) => e !== "id");
+
+  columns = columns.map((e) => `${e} = @${e}`);
+
+  console.log({ columns });
+
+  let query = `update  dbo.Status 
+                        set ${columns.join(",\n")} 
+                where id = @id`;
+  await sql(query, ctx.request.body);
+  await getStatus(ctx);
 }
