@@ -2,6 +2,7 @@
 import { sql } from "./../sql";
 
 export async function getStatus(ctx) {
+    console.log("getStatus");
     ctx.body = await sql("select * from dbo.Status");
 }
 
@@ -56,8 +57,8 @@ export async function postStatus(ctx) {
 
 
 export async function deleteStatus(ctx) {
-    const { nume, tipStatus, statusDesign } = ctx.request.body;
+    const { id } = ctx.request.body;
 
-    ctx.body = await sql("delete from dbo.Status where Nume = @nume)", ctx.request.body);
+    ctx.body = await sql("delete from dbo.Status where Id = @id)", ctx.request.body);
 
 }
