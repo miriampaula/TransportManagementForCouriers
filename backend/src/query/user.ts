@@ -31,3 +31,8 @@ export const loggedUserQuery = `
     from dbo."User" 
     where email = @__ctx
 `;
+
+export const getUsersQuery = `
+select *
+from dbo."User" 
+`;

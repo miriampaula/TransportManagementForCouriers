@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loggedUserQuery = exports.validateTokenQuery = exports.passwordRecoverQuery = exports.registerUserQuery = exports.loginUserQuery = void 0;
+exports.getUsersQuery = exports.loggedUserQuery = exports.validateTokenQuery = exports.passwordRecoverQuery = exports.registerUserQuery = exports.loginUserQuery = void 0;
 exports.loginUserQuery = `
 EXEC dbo.LoginUser
     @email = @email,
@@ -29,4 +29,8 @@ exports.loggedUserQuery = `
     select *
     from dbo."User" 
     where email = @__ctx
+`;
+exports.getUsersQuery = `
+select *
+from dbo."User" 
 `;
