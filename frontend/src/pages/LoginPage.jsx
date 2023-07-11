@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useState, useEffect } from "react";
 import Input from "../components/Input";
-import sql from "../services/SqlService";
+import { sql } from "../../../backend/src/sql";
 
 const BASE_URL = "http://localhost:80/api";
 
@@ -28,6 +28,7 @@ const LoginPage = () => {
         },
         body: JSON.stringify(userData),
       });
+      console.log(response);
       const responseText = await response.text();
       if (response.status === 200) {
         console.log("success");
@@ -36,14 +37,10 @@ const LoginPage = () => {
       } else {
         setError(responseText);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
     }
   };
-
-  // useEffect(() => {
-  //   console.log(userData);
-  // }, [userData]);
 
   return (
     <div className="flex w-full justify-center p-20">
@@ -77,5 +74,4 @@ const LoginPage = () => {
     </div>
   );
 };
-
 export default LoginPage;

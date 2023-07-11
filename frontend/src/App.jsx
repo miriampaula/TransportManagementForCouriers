@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/dosar-transport" element={<DosarTransportPage />} />

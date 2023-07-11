@@ -7,8 +7,8 @@ export default function HomePage() {
     sql.query("test");
   }, []);
   return (
-    <body>
+    <div>
       <Scanner />
-    </body>
+    </div>
   );
 }
