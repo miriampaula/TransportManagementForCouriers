@@ -2,63 +2,58 @@
 import { sql } from "./../sql";
 
 export async function getStatus(ctx) {
-    console.log("getStatus");
-    ctx.body = await sql("select * from dbo.Status");
+    const { recordsets } = await sql("select * from dbo.Status");
+    ctx.body = recordsets;
 }
 
 export async function putStatus(ctx) {
     const { nume, tipStatus, statusDesign } = ctx.request.body;
     if (!nume) {
         return ctx.throw(400, "Coloana <nume> este obligatorie pentru tabela <status>!");
-    } else if (typeof nume !== "string") {
-        return ctx.throw(400, "Coloana <nume> pentru tabela <status> trebuie sa contina type string!");
     }
     if (!tipStatus) {
         return ctx.throw(400, "Coloana <tipStatus> este obligatorie pentru tabela <status>!");
-    } else if (typeof tipStatus !== "string") {
-        return ctx.throw(400, "Coloana <tipStatus> pentru tabela <status> trebuie sa contina type string!");
     }
-
     if (!statusDesign) {
         return ctx.throw(400, "Coloana <statusDesign> este obligatorie pentru tabela <status>!");
-    } else if (typeof statusDesign !== "string") {
-        return ctx.throw(400, "Coloana <statusDesign> pentru tabela <status> trebuie sa contina type string!");
     }
-    ctx.body = await sql("insert into dbo.Status(nume, TipStatus, StatusDesign) values(@nume, @tipStatus, @statusDesign)", ctx.request.body);
+    await sql("insert into dbo.Status(Nume, TipStatus, StatusDesign) values(@nume, @tipStatus, @statusDesign)", ctx.request.body);
+    await getStatus(ctx);
 }
-
-
-export async function postStatus(ctx) {
-    const { nume, tipStatus, statusDesign } = ctx.request.body;
-
-    if (nume) {
-        if (typeof nume !== "string") {
-            return ctx.throw(400, "Coloana <nume> pentru tabela <status> trebuie sa contina type string!");
-        } else {
-            ctx.body = await sql("update dbo.Status set nume = @nume,", ctx.request.body);
-        }
-
-    }
-    if (tipStatus) {
-        if (typeof tipStatus !== "string") {
-            return ctx.throw(400, "Coloana <tipStatus> pentru tabela <status> trebuie sa contina type string!");
-        } else {
-            ctx.body = await sql("update dbo.Status set TipStatus = @tipStatus,", ctx.request.body);
-        }
-    }
-    if (statusDesign) {
-        if (typeof statusDesign !== "string") {
-            return ctx.throw(400, "Coloana <statusDesign> pentru tabela <status> trebuie sa contina type string!");
-        } else {
-            ctx.body = await sql("update dbo.Status set StatusDesign = @statusDesign,", ctx.request.body);
-        }
-    }
-}
-
 
 export async function deleteStatus(ctx) {
-    const { id } = ctx.request.body;
-
-    ctx.body = await sql("delete from dbo.Status where Id = @id)", ctx.request.body);
-
+    const { id } = ctx.request.query;
+    await sql(`delete from status where id=@id`, { id });
+    await getStatus(ctx);
 }
+
+export async function updateStatus(ctx) {
+    let { id } = ctx.request.body;
+    if (!id) {
+        return ctx.throw(400, "Coloana <id> este obligatorie pentru update !");
+    }
+    let { recordset: [idExists] } = await sql('select id from status where id=@id', { id });
+
+    if (!idExists) {
+        return ctx.throw(400, `Id-ul ${id} nu exista in tabela status!`);
+    }
+
+    let columns = Object.keys(ctx.request.body).filter(e => e !== 'id');
+
+    columns = columns.map(e => `${e} = @${e}`);
+    
+    console.log({ columns });
+
+    let query = `update  dbo.Status 
+                        set ${columns.join(',\n')} 
+                where id = @id`
+    await sql(query, ctx.request.body);
+    await getStatus(ctx);
+}
+
+
+
+
+
+
+
