@@ -2,7 +2,13 @@
 import { sql } from "./../sql";
 
 export async function getStatus(ctx) {
-    const { recordset } = await sql("select * from dbo.Status");
+    let query = "select * from dbo.Status"
+    let params = { id: undefined }
+    if (ctx.request.query.id) {
+        query += " where id=@id";
+        params.id = ctx.request.query.id;
+    }
+    let { recordset } = await sql(query, params);
     ctx.body = recordset;
 }
 
@@ -29,6 +35,7 @@ export async function deleteStatus(ctx) {
 
 export async function updateStatus(ctx) {
     let { id } = ctx.request.body;
+    id = id || ctx.request.query.id;
     if (!id) {
         return ctx.throw(400, "Coloana <id> este obligatorie pentru update !");
     }
@@ -41,13 +48,13 @@ export async function updateStatus(ctx) {
     let columns = Object.keys(ctx.request.body).filter(e => e !== 'id');
 
     columns = columns.map(e => `${e} = @${e}`);
-    
+
     console.log({ columns });
 
     let query = `update  dbo.Status 
                         set ${columns.join(',\n')} 
                 where id = @id`
-    await sql(query, ctx.request.body);
+    await sql(query, { ...ctx.request.body, id });
     await getStatus(ctx);
 }
 
