@@ -8,29 +8,29 @@ const CreateStatusPage = () => {
     statusDesign: ""
   });
   const [error, setError] = useState("");
-
+  const BASE_URL="http://localhost:8080/api/data";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/data/status`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(statusData),
-        }
-      );
-      const resposneText = await response.text();
-      console.log(response);
-      if (response.status === 201) {
-        console.log("success");
+     // const response = await fetch( `$http://localhost:8080/api/data/status', {
+      const response = await fetch( `${BASE_URL}/status`,{
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(statusData),
+      });
+
+      if (response.ok) {
+        console.log("Status added successfully");
+        // Redirecționează utilizatorul către pagina de home
+        window.location.href = "/status";
       } else {
-        setError(resposneText);
+        const errorMessage = await response.text();
+        setError(errorMessage);
       }
     } catch (error) {
-      console.log("CreateStatusPage::handleSubmit::", error.message);
+      console.log("Error while adding status:", error.message);
     }
   };
 
@@ -43,6 +43,7 @@ const CreateStatusPage = () => {
           placeholder="Nume"
           required
           autoComplete="off"
+          value={statusData.nume}
           onChange={(e) =>
             setStatusData((prevState) => ({
               ...prevState,
@@ -56,6 +57,7 @@ const CreateStatusPage = () => {
           placeholder="Tip Status"
           required
           autoComplete="off"
+          value={statusData.tipStatus}
           onChange={(e) =>
             setStatusData((prevState) => ({
               ...prevState,
@@ -69,6 +71,7 @@ const CreateStatusPage = () => {
           placeholder="Design Status"
           required
           autoComplete="off"
+          value={statusData.statusDesign}
           onChange={(e) =>
             setStatusData((prevState) => ({
               ...prevState,
@@ -78,9 +81,11 @@ const CreateStatusPage = () => {
         />
         <Button text="Create Status" onClick={handleSubmit} />
         {error && <div className="text-red-600">{error}</div>}
+        
       </form>
     </div>
   );
 };
+
 
 export default CreateStatusPage;
