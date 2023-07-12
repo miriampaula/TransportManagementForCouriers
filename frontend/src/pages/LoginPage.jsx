@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useNavigate } from "react";
 import Input from "../components/Input";
 
 const BASE_URL = "http://localhost:80/api";
@@ -22,10 +22,7 @@ const LoginPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        body: JSON.stringify(userData),
       });
       const responseText = await response.text();
       console.log(responseText);

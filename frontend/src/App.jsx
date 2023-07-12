@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
 import Users from "./pages/Users";
 import StatusPage from "./pages/StatusPage";
-import Users from "./pages/Users";
 
 function App() {
   return (
