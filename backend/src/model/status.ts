@@ -28,17 +28,17 @@ export async function deleteStatus(ctx) {
 }
 
 export async function updateStatus(ctx) {
-    let { id } = ctx.request.body;
-    if (!id) {
+    let { Id } = ctx.request.body;
+    if (!Id) {
         return ctx.throw(400, "Coloana <id> este obligatorie pentru update !");
     }
-    let { recordset: [idExists] } = await sql('select id from status where id=@id', { id });
+    let { recordset: [idExists] } = await sql('select id from status where id=@id', { id: Id });
 
     if (!idExists) {
-        return ctx.throw(400, `Id-ul ${id} nu exista in tabela status!`);
+        return ctx.throw(400, `Id-ul ${Id} nu exista in tabela status!`);
     }
 
-    let columns = Object.keys(ctx.request.body).filter(e => e !== 'id');
+    let columns = Object.keys(ctx.request.body).filter(e => e !== 'Id');
 
     columns = columns.map(e => `${e} = @${e}`);
     
