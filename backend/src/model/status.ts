@@ -3,8 +3,8 @@ import * as Koa from "koa";
 import { sql } from "./../sql";
 
 export async function getStatus(ctx) {
-  const { recordsets } = await sql("select * from dbo.Status");
-  ctx.body = recordsets;
+  const { recordset } = await sql("select * from dbo.Status");
+  ctx.body = recordset;
 }
 
 export async function putStatus(ctx) {
