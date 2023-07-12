@@ -33,6 +33,6 @@ export const loggedUserQuery = `
 `;
 
 export const getUsersQuery = `
-    select *
-    from [User]
+select *
+from dbo."User" 
 `;

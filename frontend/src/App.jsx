@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
 import Users from "./pages/Users";
 import StatusPage from "./pages/StatusPage";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/users" element={<Users />} />
           <Route path="/status" element={<StatusPage />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
     </div>
