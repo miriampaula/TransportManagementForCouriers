@@ -14,7 +14,7 @@ const UpdateDosarPage = () => {
   const [auto, setAuto] = useState("");
   const [scanatLivrare, setScanatLivrare] = useState(new Date().toISOString().slice(0, 16));
   const [error, setError] = useState("");
-  const BASE_URL = "http://localhost:8080/api/data";
+  const BASE_URL = "http://localhost:80/api/data";
 
   useEffect(() => {
     const getDosarData = async () => {

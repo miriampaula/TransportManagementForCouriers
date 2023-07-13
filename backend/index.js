@@ -6,7 +6,7 @@ const Koa = require("koa");
 const serve = require("koa-static");
 const router_1 = require("./src/router");
 const cors = require("@koa/cors");
-process.env["PORT"] = process.env["PORT"] || "8080";
+process.env["PORT"] = process.env["PORT"] || "80";
 process.chdir(__dirname);
 // create folder upload if not exists
 (async () => {

@@ -8,11 +8,11 @@ const CreateStatusPage = () => {
     statusDesign: ""
   });
   const [error, setError] = useState("");
-  const BASE_URL="http://localhost:8080/api/data";
+  const BASE_URL="http://localhost:80/api/data";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     // const response = await fetch( `$http://localhost:8080/api/data/status', {
+     // const response = await fetch( `$http://localhost:80/api/data/status', {
       const response = await fetch( `${BASE_URL}/status`,{
         method: "PUT",
         headers: {

@@ -5,7 +5,7 @@ import * as serve from "koa-static";
 import { index, router } from "./src/router";
 import * as cors from '@koa/cors';
 
-process.env["PORT"] = process.env["PORT"] || "8080";
+process.env["PORT"] = process.env["PORT"] || "80";
 
 process.chdir(__dirname);
 

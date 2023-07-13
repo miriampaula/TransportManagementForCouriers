@@ -8,7 +8,7 @@ const StatusPage = () => {
   useEffect(() => {
     const getStatuses = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/data/status`, {
+        const response = await fetch(`http://localhost:80/api/data/status`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const StatusPage = () => {
 
   const deleteRow = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/data/status?id=${id}`, {
+      await fetch(`http://localhost:80/api/data/status?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

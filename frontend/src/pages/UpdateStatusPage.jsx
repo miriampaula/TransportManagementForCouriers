@@ -9,7 +9,7 @@ const UpdateStatusPage = () => {
   const [tipStatus, setTipStatus] = useState("");
   const [statusDesign, setStatusDesign] = useState("");
   const [error, setError] = useState("");
-  const BASE_URL = "http://localhost:8080/api/data";
+  const BASE_URL = "http://localhost:80/api/data";
 
   useEffect(() => {
     const getStatusData = async () => {

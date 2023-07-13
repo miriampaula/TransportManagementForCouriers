@@ -10,12 +10,15 @@ const DosarTransportPage = () => {
   useEffect(() => {
     const getDosare = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/data/dosartransport`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `http://localhost:80/api/data/dosartransport`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const dosareJson = await response.json();
         setDosare(dosareJson);
@@ -31,7 +34,7 @@ const DosarTransportPage = () => {
 
   const deleteDosar = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/data/dosartransport?id=${id}`, {
+      await fetch(`http://localhost:80/api/data/dosartransport?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -75,17 +78,36 @@ const DosarTransportPage = () => {
           <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
             <thead>
               <tr className="bg-gray-200">
-                <th className="py-4 px-6 text-left text-gray-700 font-bold">Nume</th>
-                <th className="py-4 px-6 text-left text-gray-700 font-bold">Descriere</th>
-                <th className="py-4 px-6 text-left text-gray-700 font-bold">Sofer</th>
+                <th className="py-4 px-6 text-left text-gray-700 font-bold">
+                  #
+                </th>
+                <th className="py-4 px-6 text-left text-gray-700 font-bold">
+                  Nume
+                </th>
+                <th className="py-4 px-6 text-left text-gray-700 font-bold">
+                  Descriere
+                </th>
+                <th className="py-4 px-6 text-left text-gray-700 font-bold">
+                  Sofer
+                </th>
                 <th className="py-4 px-6 text-left text-gray-700 font-bold"></th>
               </tr>
             </thead>
             <tbody>
               {filteredDosare.map((dosar, index) => (
-                <tr key={dosar.Id} className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}>
+                <tr
+                  key={dosar.Id}
+                  className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}
+                >
+                  <td className="whitespace-nowrap w-12">
+                    <Link to={`/facturi/${dosar.Id}`}>
+                      <img src={require("./../assets/scan-icon.png")} />
+                    </Link>
+                  </td>
                   <td className="py-4 px-6 whitespace-nowrap">{dosar.Nume}</td>
-                  <td className="py-4 px-6 whitespace-nowrap">{dosar.Descriere}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">
+                    {dosar.Descriere}
+                  </td>
                   <td className="py-4 px-6 whitespace-nowrap">{dosar.Sofer}</td>
                   <td className="py-4 px-6 whitespace-nowrap">
                     <div className="flex items-center gap-2">
