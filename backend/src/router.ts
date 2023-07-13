@@ -15,6 +15,7 @@ import {
 } from "./user";
 import { deleteStatus, getStatus, updateStatus } from "./model/status";
 import { putStatus } from "./model/status";
+import { deletedosar, getDosar, putDosar, updateDosar } from "./model/dosartransport";
 
 const bodyParser = koaBody({
   jsonLimit: 50 * 1024 * 1025,
@@ -39,13 +40,16 @@ const multipartBody = koaBody({
 const router = new Router({ prefix: "/api" });
 
 router
-  //.delete("/data/status", deleteStatus)
   .get("/data/status", getStatus)
- .put("/data/status", bodyParser, putStatus)
- //.put("/data/status/:id", bodyParser, putStatus)
- .post("/data/status", bodyParser, updateStatus)
+  .put("/data/status", bodyParser, putStatus)
+  .post("/data/status", bodyParser, updateStatus)
   .delete("/data/status",bodyParser,deleteStatus)
- // .put("/data/status/:id", bodyParser, updateStatus)
+
+  .get("/data/dosartransport", getDosar)
+  .put("/data/dosartransport", bodyParser, putDosar)
+  .post("/data/dosartransport", bodyParser, updateDosar)
+  .delete("/data/dosartransport",bodyParser,deletedosar)
+
   .post("/loginUser", bodyParser, loginUser)
   .get("/logoutUser", logoutUser)
   .post("/registerUser", bodyParser, registerUser)
