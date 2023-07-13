@@ -1,7 +1,7 @@
 // import { stringify } from "json5";
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
-import Modal from "../components/modal/Modal";
+//import Modal from "../components/modal/Modal";
 
 const StatusPage = () => {
   const [statuses, setStatuses] = useState([]);
@@ -185,7 +185,6 @@ const StatusPage = () => {
   };
 
   return (
-
     <div className="overflow-x-auto">
       <div className="h-screen bg-gradient-to-br from-green-50 to-indigo-100 grid place-items-center">
         <div className="w-full lg:w-5/6">
@@ -193,14 +192,18 @@ const StatusPage = () => {
             id="addStatusButton"
             onClick={() => addRow()}
             type="button"
-            className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Adauga status nou
+            className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Adauga status nou
           </button>
 
           <div className="bg-white shadow-md rounded my-6">
             <table className="min-w-max w-full table-auto">
               <thead>
                 <tr
-                  style={{ backgroundColor: "#F6F9FE" }} className="bg-gray-80 text-gray-600 uppercase text-sm leading-normal">
+                  style={{ backgroundColor: "#F6F9FE" }}
+                  className="bg-gray-80 text-gray-600 uppercase text-sm leading-normal"
+                >
                   <th className="py-3 px-6 text-left">Nume</th>
                   <th className="py-3 px-6 text-left">Tip Status</th>
                   <th className="py-3 px-6 text-center">Design</th>
@@ -355,8 +358,7 @@ const StatusPage = () => {
           </div>
         </div>
       </div>
-    </div >
-
+    </div>
   );
 };
 
