@@ -6,7 +6,12 @@ import RegisterPage from "./pages/RegisterPage";
 import CreateStatusPage from "./pages/CreateStatusPage";
 import LoginPage from "./pages/LoginPage";
 import Users from "./pages/Users";
->>>>>>>>> Temporary merge branch 2
+import StatusPage from "./pages/StatusPage";
+import UpdateStatusPage from "./pages/UpdateStatusPage";
+import UpdateDosarPage from "./pages/UpdateDosarPage";
+import DetailsDosarPage from "./pages/DetailsDosarPage";
+import CreateDosarPage from "./pages/CreateDosarPage";
+import FacturiDosarPage from "./pages/FacturiDosarPage";
 
 function App() {
   return (
@@ -19,7 +24,13 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/users" element={<Users />} />
->>>>>>>>> Temporary merge branch 2
+          <Route path="/createstatus" element={<CreateStatusPage />} />
+          <Route path="/status" element={<StatusPage />} />
+          <Route path="/updatestatus/:id" element={<UpdateStatusPage />} />
+          <Route path="/updatedosar/:id" element={<UpdateDosarPage />} />
+          <Route path="/detaliidosar/:id" element={<DetailsDosarPage />} />
+          <Route path="/facturi/:id" element={<FacturiDosarPage />} />
+          <Route path="/createdosar" element={<CreateDosarPage />} />
         </Routes>
       </Router>
     </div>
