@@ -3,7 +3,6 @@ import Button from "../components/Button";
 import { useState} from "react";
 import Input from "../components/Input";
 
-const BASE_URL = "/api";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${BASE_URL}/loginUser`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/loginUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

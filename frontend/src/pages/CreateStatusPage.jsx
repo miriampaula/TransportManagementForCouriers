@@ -8,12 +8,11 @@ const CreateStatusPage = () => {
     statusDesign: ""
   });
   const [error, setError] = useState("");
-  const BASE_URL="/api/data";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
      // const response = await fetch( `$/api/data/status', {
-      const response = await fetch( `${BASE_URL}/status`,{
+      const response = await fetch( `${process.env.REACT_APP_BASE_URL}/data/status`,{
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

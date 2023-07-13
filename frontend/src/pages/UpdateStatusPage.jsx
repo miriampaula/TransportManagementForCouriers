@@ -9,12 +9,11 @@ const UpdateStatusPage = () => {
   const [tipStatus, setTipStatus] = useState("");
   const [statusDesign, setStatusDesign] = useState("");
   const [error, setError] = useState("");
-  const BASE_URL = "/api/data";
 
   useEffect(() => {
     const getStatusData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/status?id=${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -40,7 +39,7 @@ const UpdateStatusPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${BASE_URL}/status?id=${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
