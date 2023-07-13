@@ -1,9 +1,15 @@
 // import { stringify } from "json5";
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
+import Modal from "../components/modal/Modal";
 
 const StatusPage = () => {
   const [statuses, setStatuses] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const clickHandler = () => setIsModalOpen(true);
+  const modalCloseHandler = () => setIsModalOpen(false);
+
   useEffect(() => {
     const getStatuses = async () => {
       try {
@@ -240,52 +246,89 @@ const StatusPage = () => {
                             ></circle>
                           </svg>
                         </div>
-                        <span name="continut-nume" className="font-medium">
-                          {status.nume}
-                        </span>
+                        {!status.editMode && (
+                          <span name="continut-nume" className="font-medium">
+                            {status.nume}
+                          </span>
+                        )}
+                        {status.editMode && (
+                          <input
+                            value={status.nume}
+                            onChange={(e) => {
+                              status.nume = e.target.value;
+                              setStatuses([...statuses]);
+                            }}
+                            className="border border-gray-300 rounded px-2 py-1 bg-gray-100"
+                          />
+                        )}
                       </div>
                     </td>
                     <td className="py-3 px-6 text-left">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
-                        <span name="continut-tipstatus">
-                          {status.TipStatus}
-                        </span>
+                        {!status.editMode && (
+                          <span name="continut-tipstatus">
+                            {status.TipStatus}
+                          </span>
+                        )}
+                        {status.editMode && (
+                          <input
+                            value={status.TipStatus}
+                            onChange={(e) => {
+                              status.TipStatus = e.target.value;
+                              setStatuses([...statuses]);
+                            }}
+                            className="border border-gray-300 rounded px-2 py-1 bg-gray-100"
+                          />
+                        )}
                       </div>
                     </td>
                     <td className="py-3 px-6 text-center">
-                      <div className="flex items-center justify-center">
-                        <span name="continut-statusdesign">
-                          {status.StatusDesign}
-                        </span>
-                      </div>
+                      {!status.editMode && (
+                        <div className="flex items-center justify-center">
+                          <span name="continut-statusdesign">
+                            {status.StatusDesign}
+                          </span>
+                        </div>
+                      )}
+                      {status.editMode && (
+                        <input
+                          value={status.StatusDesign}
+                          onChange={(e) => {
+                            status.StatusDesign = e.target.value;
+                            setStatuses([...statuses]);
+                          }}
+                          className="border border-gray-300 rounded px-2 py-1 bg-gray-100"
+                        />
+                      )}
                     </td>
 
                     <td className="py-3 px-3 text-center">
                       <div className="flex item-center justify-center">
                         <div className="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
-                          <svg
-                            onClick={() =>
-                              editRow(
-                                status.Id,
-                                status.nume,
-                                status.TipStatus,
-                                status.StatusDesign,
-                                index
-                              )
-                            }
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                            />
-                          </svg>
+                          {!status.editMode && (
+                            <svg
+                              onClick={() => {
+                                console.info({ status });
+                                status.editMode = !status.editMode;
+                                setStatuses([...statuses]);
+                              }}
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                              />
+                            </svg>
+                          )}
+                          {status.editMode && (
+                            <span onClick={() => updateStatus(status)}>✓</span>
+                          )}
                         </div>
                         <div className="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
                           <svg
