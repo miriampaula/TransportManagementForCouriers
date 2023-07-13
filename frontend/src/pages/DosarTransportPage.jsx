@@ -1,11 +1,12 @@
-import Form from "../components/Form";
+import React from 'react';
+import Accordion from '../components/Accordion';
 
-export default function DosarTransportPage() {
+const App = () => {
   return (
     <div>
-      <div className="flex flex-col w-full items-center mt-10">
-        <Form title="Dosar de transport nou" />
-      </div>
+      <Accordion />
     </div>
   );
-}
+};
+
+export default App;
