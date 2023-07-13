@@ -179,22 +179,22 @@ const StatusPage = () => {
   };
 
   return (
+
     <div className="overflow-x-auto">
-      <div className="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+      <div className="h-screen bg-gradient-to-br from-green-50 to-indigo-100 grid place-items-center">
         <div className="w-full lg:w-5/6">
           <button
             id="addStatusButton"
             onClick={() => addRow()}
             type="button"
-            className="text-green-600 hover:text-white border border-green-700 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-500 dark:focus:ring-green-800"
-          >
-            Adauga status nou
+            className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Adauga status nou
           </button>
 
           <div className="bg-white shadow-md rounded my-6">
             <table className="min-w-max w-full table-auto">
               <thead>
-                <tr className="bg-gray-300 text-gray-600 uppercase text-sm leading-normal">
+                <tr
+                  style={{ backgroundColor: "#F6F9FE" }} className="bg-gray-80 text-gray-600 uppercase text-sm leading-normal">
                   <th className="py-3 px-6 text-left">Nume</th>
                   <th className="py-3 px-6 text-left">Tip Status</th>
                   <th className="py-3 px-6 text-center">Design</th>
@@ -349,7 +349,8 @@ const StatusPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
+
   );
 };
 
