@@ -26,8 +26,15 @@
     "@types/koa": "^2.13.6",
     "@types/koa__cors": "^4.0.0",
     "@types/koa__router": "^12.0.0",
+    "@types/koa-router": "^7.4.4",
     "@types/koa-static": "^4.0.2",
     "@types/mssql": "^8.1.2",
+    "html-webpack-plugin": "^5.5.3",
     "typescript": "~5.0.2"
-  }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
