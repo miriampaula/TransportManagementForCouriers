@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import { useState, useEffect, useNavigate } from "react";
 import Input from "../components/Input";
 
-const BASE_URL = "http://localhost:80/api";
+const BASE_URL = "/api";
 
 const LoginPage = () => {
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { useZxing } from "react-zxing";
 import Button from "./Button";
 import beep from "../assets/beep.mp3";
 
-const Scanner = () => {
+const Scanner = ({handleResult}) => {
   const [audio] = useState(new Audio(beep));
   const [result, setResult] = useState("");
   const [results, setResults] = useState([]);
@@ -16,6 +16,7 @@ const Scanner = () => {
     onResult(result) {
       setResult(result.getText());
       setResults((prevState) => [...prevState, result]);
+      handleResult(result.getText());
       audio.play();
     },
     onError(error) {
@@ -27,7 +28,6 @@ const Scanner = () => {
     <div className="flex flex-col items-center">
       <video ref={ref} className="w-5/6" />
       <div>
-        <p>Last result:</p>
         <p>{result}</p>
       </div>
       <Button
