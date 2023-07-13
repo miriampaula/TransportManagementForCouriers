@@ -15,7 +15,7 @@ const CreateDosarPage = () => {
     scanatIncarcare: null
   });
   const [error, setError] = useState("");
-  const BASE_URL = "http://localhost:80/api/data";
+  const BASE_URL = "/api/data";
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

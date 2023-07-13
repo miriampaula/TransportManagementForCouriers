@@ -11,7 +11,7 @@ const DosarTransportPage = () => {
     const getDosare = async () => {
       try {
         const response = await fetch(
-          `http://localhost:80/api/data/dosartransport`,
+          `/api/data/dosartransport`,
           {
             method: "GET",
             headers: {
@@ -34,7 +34,7 @@ const DosarTransportPage = () => {
 
   const deleteDosar = async (id) => {
     try {
-      await fetch(`http://localhost:80/api/data/dosartransport?id=${id}`, {
+      await fetch(`/api/data/dosartransport?id=${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

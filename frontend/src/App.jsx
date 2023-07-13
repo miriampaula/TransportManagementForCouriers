@@ -19,6 +19,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route path="/" element={<DosarTransportPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/dosar-transport" element={<DosarTransportPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -29,7 +30,7 @@ function App() {
           <Route path="/updatestatus/:id" element={<UpdateStatusPage />} />
           <Route path="/updatedosar/:id" element={<UpdateDosarPage />} />
           <Route path="/detaliidosar/:id" element={<DetailsDosarPage />} />
-          <Route path="/facturi/:id" element={<FacturiDosarPage />} />
+          <Route path="/facturi/:idDosar" element={<FacturiDosarPage />} />
           <Route path="/createdosar" element={<CreateDosarPage />} />
 
         </Routes>

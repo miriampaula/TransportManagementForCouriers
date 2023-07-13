@@ -5,7 +5,7 @@ import Button from "../components/Button";
 const DetailsDosarPage = () => {
   const { id } = useParams();
   const [dosar, setDosar] = useState(null);
-  const BASE_URL = "http://localhost:80/api/data";
+  const BASE_URL = "/api/data";
 
   useEffect(() => {
     const getDosarData = async () => {
