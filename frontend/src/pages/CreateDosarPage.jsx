@@ -15,7 +15,7 @@ const CreateDosarPage = () => {
     scanatIncarcare: null
   });
   const [error, setError] = useState("");
-  const BASE_URL = "/api/data";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -28,7 +28,7 @@ const CreateDosarPage = () => {
           : null
       };
 
-      const response = await fetch(`${BASE_URL}/dosartransport`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/dosartransport`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

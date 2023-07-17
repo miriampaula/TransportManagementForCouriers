@@ -5,12 +5,11 @@ import Button from "../components/Button";
 const DetailsDosarPage = () => {
   const { id } = useParams();
   const [dosar, setDosar] = useState(null);
-  const BASE_URL = "/api/data";
 
   useEffect(() => {
     const getDosarData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/dosartransport?id=${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/dosartransport?id=${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

@@ -15,8 +15,6 @@ const FacturiDosarPage = () => {
   const [coletstatus, setcoletstatus] = useState([]);
   const [isDivGreen, setIsDivGreen] = useState([]);
 
-  const BASE_URL = "/api/data";
-
   const handleAccordionClick = (index) => {
     if (activeIndex.includes(index)) {
       setActiveIndex(activeIndex.filter((i) => i !== index));
@@ -36,7 +34,7 @@ const FacturiDosarPage = () => {
   useEffect(() => {
     const putDosarData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/facturidosar`, {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/facturidosar`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -65,7 +63,7 @@ const FacturiDosarPage = () => {
     const getDosarData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}/facturidosar?idDosar=${idDosar}`,
+          `${process.env.REACT_APP_BASE_URL}/data/facturidosar?idDosar=${idDosar}`,
           {
             method: "GET",
             headers: {
