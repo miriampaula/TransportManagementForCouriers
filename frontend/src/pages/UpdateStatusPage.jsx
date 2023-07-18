@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../components/Button";
+import EnqueueSnackBar, { VariantType } from "../components/UseSnackbar";
 
 const UpdateStatusPage = () => {
   const { id } = useParams();
@@ -9,20 +10,27 @@ const UpdateStatusPage = () => {
   const [tipStatus, setTipStatus] = useState("");
   const [statusDesign, setStatusDesign] = useState("");
   const [error, setError] = useState("");
+  const enqueueSnackBar = EnqueueSnackBar();
 
   useEffect(() => {
     const getStatusData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const [statusData] = await response.json();
-        if(!statusData){
-          return alert('Acest status nu exista in baza de date !');
+        if (!statusData) {
+          return enqueueSnackBar(
+            "Acest status nu exista in baza de date !",
+            VariantType.ERROR
+          );
         }
         console.log(statusData);
         setNume(statusData.nume);
@@ -39,18 +47,21 @@ const UpdateStatusPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nume, tipStatus, statusDesign }),
-      });
-
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/data/status?id=${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nume, tipStatus, statusDesign }),
+        }
+      );
       if (response.ok) {
         console.log("Status updated successfully");
         // Redirecționează utilizatorul către pagina Home
         window.location.href = "/status";
+        enqueueSnackBar("Status updated successfully", VariantType.SUCCESS);
       } else {
         const errorMessage = await response.text();
         setError(errorMessage);
@@ -94,7 +105,11 @@ const UpdateStatusPage = () => {
           onChange={(e) => setStatusDesign(e.target.value)}
         />
         <Button text="Update Status" onClick={handleSubmit} />
-        {error && <div className="text-red-600">{error}</div>}
+        {error && (
+          <div className="text-red-600">
+            {enqueueSnackBar(error, VariantType.ERROR)}
+          </div>
+        )}
       </form>
     </div>
   );
