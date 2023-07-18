@@ -14,7 +14,7 @@ import CreateDosarPage from "./pages/CreateDosarPage";
 import FacturiDosarPage from "./pages/FacturiDosarPage";
 import ScanDosarPage from "./pages/ScanDosarPage";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 // structura pentru userContext
 let userContext = JSON.stringify({
   loggedId: false,
@@ -30,6 +30,10 @@ function App() {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userContext") || userContext)
   );
+  useEffect(() => {
+    console.log('userState::App', user);
+    localStorage.setItem("userContext", JSON.stringify(user));
+  }, [user]);
   return (
     <div className="App">
       <UserContext.Provider value={{ user, setUser }}>
