@@ -9,3 +9,18 @@ export async function getColet(ctx: Koa.Context) {
   let { recordset } = await sql(query, { idDosar } as any);
   ctx.body = recordset;
 }
+
+
+export async function updateColet(ctx: Koa.Context) {
+  let { idColet } = ctx.request.body;
+  const query = `
+    UPDATE dbo.DosarTransport_Colete
+    SET ScanatIncarcare = GETDATE()
+    WHERE IdColet = @idColet;
+  `;
+  await sql(query, { idColet } as any);
+  
+  // Return the updated colet data by calling the getColet function
+  const updatedColet = await getColet(ctx);
+  return updatedColet;
+}

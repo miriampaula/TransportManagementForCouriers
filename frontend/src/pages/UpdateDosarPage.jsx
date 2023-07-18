@@ -15,7 +15,6 @@ const UpdateDosarPage = () => {
   const [auto, setAuto] = useState("");
   const [scanatLivrare, setScanatLivrare] = useState(new Date().toISOString().slice(0, 16));
   const [error, setError] = useState("");
-  const BASE_URL = "/api/data";
   const enqueueSnackbar = EnqueueSnackBar();
 
   useEffect(() => {

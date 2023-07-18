@@ -36,3 +36,4 @@ export const getUsersQuery = `
 select *
 from dbo."User" 
 `;
+

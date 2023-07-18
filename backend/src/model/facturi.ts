@@ -28,7 +28,7 @@ async function getFacturiDosarResponse({ idDosar, codbare }) {
 
 export async function putFacturiDosar(ctx: Koa.Context) {
     let { idDosar, codbare } = ctx.request.body;
-    codbare = codbare.replace('FC', '');
+    codbare = codbare.toString().replace('FC', '');
     console.log('putFacturiDosar', ctx.request.body);
     if (!idDosar) {
         return ctx.throw(400, `ID-ul de dosar este obligatoriu !`);
