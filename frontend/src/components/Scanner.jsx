@@ -26,7 +26,7 @@ const Scanner = ({handleResult}) => {
 
   return (
     <div className="flex flex-col items-center">
-      <video ref={ref} className="w-5/6" />
+      <video ref={ref} className="w-full mb-8" />
       <div>
         <p>{result}</p>
       </div>

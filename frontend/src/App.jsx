@@ -14,7 +14,8 @@ import CreateDosarPage from "./pages/CreateDosarPage";
 import FacturiDosarPage from "./pages/FacturiDosarPage";
 import ScanDosarPage from "./pages/ScanDosarPage";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
+import ScanColetPage from "./pages/ScanColetPage";
 import { SnackbarProvider } from "notistack";
 
 // structura pentru userContext
@@ -33,7 +34,7 @@ function App() {
     JSON.parse(localStorage.getItem("userContext") || userContext)
   );
   useEffect(() => {
-    console.log('userState::App', user);
+    console.log("userState::App", user);
     localStorage.setItem("userContext", JSON.stringify(user));
   }, [user]);
   return (
@@ -51,7 +52,11 @@ function App() {
               <Route path="/detaliidosar/:id" element={<DetailsDosarPage />} />
               <Route path="/facturi/:idDosar" element={<FacturiDosarPage />} />
               <Route path="/scan/dosar/:idDosar" element={<ScanDosarPage />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route
+              path="/scan/dosar/:idDosar/scan-colet"
+              element={<ScanColetPage />}
+            />
+            <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/users" element={<Users />} />
               <Route path="/createstatus" element={<CreateStatusPage />} />
