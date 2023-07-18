@@ -7,7 +7,7 @@ const StatusPage = () => {
   useEffect(() => {
     const getStatuses = async () => {
       try {
-        const statuses = await fetch(`http://localhost:80/api/data/status`, {
+        const statuses = await fetch(`${process.env.REACT_APP_BASE_URL}/data/status`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
