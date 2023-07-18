@@ -14,7 +14,7 @@ import CreateDosarPage from "./pages/CreateDosarPage";
 import FacturiDosarPage from "./pages/FacturiDosarPage";
 import ScanDosarPage from "./pages/ScanDosarPage";
 
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { SnackbarProvider } from "notistack";
 
 // structura pentru userContext

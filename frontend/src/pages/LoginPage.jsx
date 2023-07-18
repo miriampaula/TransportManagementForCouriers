@@ -35,7 +35,6 @@ const LoginPage = () => {
           "Login reusit... navigare pe pagina HOME",
           VariantType.SUCCESS
         );
-<<<<<<<<< Temporary merge branch 1
         navigate("/");
       } else {
         setError(responseText);
