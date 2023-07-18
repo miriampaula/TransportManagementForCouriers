@@ -14,7 +14,9 @@ import CreateDosarPage from "./pages/CreateDosarPage";
 import FacturiDosarPage from "./pages/FacturiDosarPage";
 import ScanDosarPage from "./pages/ScanDosarPage";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+import { SnackbarProvider } from "notistack";
+
 // structura pentru userContext
 let userContext = JSON.stringify({
   loggedId: false,
@@ -37,25 +39,27 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ user, setUser }}>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<DosarTransportPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/dosar-transport" element={<DosarTransportPage />} />
-            <Route path="/createdosar" element={<CreateDosarPage />} />
-            <Route path="/updatedosar/:id" element={<UpdateDosarPage />} />
-            <Route path="/detaliidosar/:id" element={<DetailsDosarPage />} />
-            <Route path="/facturi/:idDosar" element={<FacturiDosarPage />} />
-            <Route path="/scan/dosar/:idDosar" element={<ScanDosarPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/createstatus" element={<CreateStatusPage />} />
-            <Route path="/status" element={<StatusPage />} />
-            <Route path="/updatestatus/:id" element={<UpdateStatusPage />} />
-          </Routes>
-        </Router>
+        <SnackbarProvider>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<DosarTransportPage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/dosar-transport" element={<DosarTransportPage />} />
+              <Route path="/createdosar" element={<CreateDosarPage />} />
+              <Route path="/updatedosar/:id" element={<UpdateDosarPage />} />
+              <Route path="/detaliidosar/:id" element={<DetailsDosarPage />} />
+              <Route path="/facturi/:idDosar" element={<FacturiDosarPage />} />
+              <Route path="/scan/dosar/:idDosar" element={<ScanDosarPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/createstatus" element={<CreateStatusPage />} />
+              <Route path="/status" element={<StatusPage />} />
+              <Route path="/updatestatus/:id" element={<UpdateStatusPage />} />
+            </Routes>
+          </Router>
+        </SnackbarProvider>
       </UserContext.Provider>
     </div>
   );

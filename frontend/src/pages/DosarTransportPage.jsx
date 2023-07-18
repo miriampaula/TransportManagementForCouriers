@@ -34,12 +34,15 @@ const DosarTransportPage = () => {
 
   const deleteDosar = async (id) => {
     try {
-      await fetch(`${process.env.REACT_APP_BASE_URL}/data/dosartransport?id=${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch(
+        `${process.env.REACT_APP_BASE_URL}/data/dosartransport?id=${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const updatedDosare = dosare.filter((dosar) => dosar.Id !== id);
       setDosare(updatedDosare);

@@ -9,7 +9,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className= {className}
+      className={className}
       name={name}
       type={type}
       placeholder={placeholder}
