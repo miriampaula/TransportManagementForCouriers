@@ -41,7 +41,10 @@ const ScanDosarPage = () => {
         <div>
           <Button
             text="Incepe scanare colete"
-            onClick={() => setUser({ ...user })}
+            onClick={() => {
+              setUser({ ...user });
+              navigate(`scan-colet`);
+            }}
           />
         </div>
       ) : user.name && !editMode ? (
@@ -49,7 +52,10 @@ const ScanDosarPage = () => {
           <p>Datele tale personale sun corecte ?</p>
           <p>{user.name}</p>
           <p>{user.auto}</p>
-          <Button text="Confirm" onClick={() => setDatePersonaleConfirmate(true)} />
+          <Button
+            text="Confirm"
+            onClick={() => setDatePersonaleConfirmate(true)}
+          />
           <Button text="Modific" onClick={() => setEditMode(true)} />
         </div>
       ) : (

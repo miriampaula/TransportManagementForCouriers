@@ -15,8 +15,14 @@ import {
 } from "./user";
 import { deleteStatus, getStatus, updateStatus } from "./model/status";
 import { putStatus } from "./model/status";
-import { deletedosar, getDosar, putDosar, updateDosar } from "./model/dosartransport";
+import {
+  deletedosar,
+  getDosar,
+  putDosar,
+  updateDosar,
+} from "./model/dosartransport";
 import { getFacturiDosar, putFacturiDosar } from "./model/facturi";
+import { getColet } from "./model/colet";
 
 const bodyParser = koaBody({
   jsonLimit: 50 * 1024 * 1025,
@@ -44,15 +50,16 @@ router
   .get("/data/status", getStatus)
   .put("/data/status", bodyParser, putStatus)
   .post("/data/status", bodyParser, updateStatus)
-  .delete("/data/status",bodyParser,deleteStatus)
+  .delete("/data/status", bodyParser, deleteStatus)
 
   .get("/data/facturidosar", getFacturiDosar)
   .put("/data/facturidosar", bodyParser, putFacturiDosar)
 
   .get("/data/dosartransport", getDosar)
+  .get("/data/colet", getColet)
   .put("/data/dosartransport", bodyParser, putDosar)
   .post("/data/dosartransport", bodyParser, updateDosar)
-  .delete("/data/dosartransport",bodyParser,deletedosar)
+  .delete("/data/dosartransport", bodyParser, deletedosar)
 
   .post("/loginUser", bodyParser, loginUser)
   .get("/logoutUser", logoutUser)
