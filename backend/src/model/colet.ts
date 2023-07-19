@@ -17,10 +17,8 @@ export async function updateColet(ctx: Koa.Context) {
     UPDATE dbo.DosarTransport_Colete
     SET ScanatIncarcare = GETDATE()
     WHERE IdColet = @idColet;
-  `;
-  await sql(query, { idColet } as any);
-  
-  // Return the updated colet data by calling the getColet function
-  const updatedColet = await getColet(ctx);
-  return updatedColet;
+  `;  
+  let { recordset } = await sql(query, { idColet } as any);
+  ctx.body = recordset;
+
 }
