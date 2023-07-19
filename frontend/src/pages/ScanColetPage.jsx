@@ -9,28 +9,23 @@ const ScanColetPage = () => {
   const [codbare, setCodbare] = useState("");
 
   const { idDosar } = useParams();
+  const getColetData = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/data/colet?idDosar=${idDosar}`
+    );
+    const responseJson = await response.json();
+    console.log("RESPONSE:", responseJson);
 
+    setColete(responseJson);
+    console.log("COLETE:", colete);
+  };
   useEffect(() => {
-    const getColetData = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/data/colet?idDosar=${idDosar}`
-      );
-      const responseJson = await response.json();
-      console.log("RESPONSE:", responseJson);
-
-      setColete(responseJson);
-      console.log("COLETE:", colete);
-    };
     getColetData();
   }, []);
 
-  
-
   useEffect(() => {
-    alert("working");
-      const scanned = colete.filter(e => e.ScanatIncarcare).length;
+    const scanned = colete.filter((e) => e.ScanatIncarcare).length;
     setScannedColeteCount(scanned);
-  
   }, [colete]);
 
   useEffect(() => {
@@ -43,29 +38,31 @@ const ScanColetPage = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ codbare }),
+            body: JSON.stringify({ idColet: codbare }),
           }
         );
         console.log("RESPONSE FROM PUT:", response);
 
         // Update the colete state with the latest data
-    //    const coletData = await response.json();
-  //      setColete(coletData);
-
+        //    const coletData = await response.json();
+        //      setColete(coletData);
       } catch (error) {
         return console.log("ERROR: ", error.message);
       }
       // start scan
     };
-    putColet();
+    putColet()
+      .then(() => getColetData())
+      .catch(console.error)
+      .finally(() => console.log("Citire lista dosare - finnaly"));
   }, [codbare]);
-
 
   return (
     <div className="w-full flex items-center flex-col p-6">
       <Scanner handleResult={setCodbare}></Scanner>
       <div className="mt-10 flex items-center">
-        Numar colete scanate: <p className="mx-2 text-xl">{scannedColeteCount}</p> din{" "}
+        Numar colete scanate:{" "}
+        <p className="mx-2 text-xl">{scannedColeteCount}</p> din{" "}
         <p className="mx-2 text-xl">{colete.length}</p>
       </div>
     </div>

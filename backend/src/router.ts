@@ -57,7 +57,7 @@ router
 
   .get("/data/dosartransport", getDosar)
   .get("/data/colet", getColet)
-  .put("/data/colet",bodyParser, updateColet)
+  .put("/data/colet", bodyParser, updateColet)
 
   .put("/data/dosartransport", bodyParser, putDosar)
   .post("/data/dosartransport", bodyParser, updateDosar)

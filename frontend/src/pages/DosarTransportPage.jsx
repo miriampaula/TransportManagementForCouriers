@@ -116,7 +116,7 @@ const DosarTransportPage = () => {
                     </div>
                   </td>
                   <td className="whitespace-nowrap w-12">
-                    <Link to={`/facturi/${dosar.Id}`}>
+                    <Link to={`/scan/dosar/${dosar.Id}/scan-colet`}>
                       <img src={require("./../assets/scan-icon.png")} />
                     </Link>
                   </td>
